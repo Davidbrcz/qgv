@@ -16,7 +16,7 @@ SET(qgv_CPP
 )
 
 # include with QT_USE selected library parts
-INCLUDE(${QT_USE_FILE})
+#INCLUDE(${QT_USE_FILE})
 
 INCLUDE_DIRECTORIES(
   ${libqgv_SOURCE_DIR}
@@ -26,13 +26,13 @@ INCLUDE_DIRECTORIES(
 )
 
 # make *.h out of *.ui
-QT4_WRAP_UI(qgv_UI_H ${qgv_UI})
+QT5_WRAP_UI(qgv_UI_H ${qgv_UI})
 
 # moc classes
-QT4_AUTOMOC(${qgv_CPP})
+#QT4_AUTOMOC(${qgv_CPP})
 
 # add translations
-QT4_ADD_TRANSLATION(qgv_TRANS ${qgv_TS})
+#QT4_ADD_TRANSLATION(qgv_TRANS ${qgv_TS})
 
 SET(neededStuff
   ${qgv_CPP}
@@ -58,8 +58,9 @@ TARGET_LINK_LIBRARIES(sample
 )
 
 IF(BINDINGS_QT5)
-	qt5_use_modules(sample Core Widgets)
-	SET(CMAKE_AUTOMOC ON)
+  #	qt5_use_modules(sample Core Widgets)
+  TARGET_LINK_LIBRARIES(sample Qt5::Core Qt5::Widgets)
+  SET(CMAKE_AUTOMOC ON)
 ENDIF(BINDINGS_QT5)
 
 # The COMPONENT option only defines the internal belonging of the INSTALL'ed thing

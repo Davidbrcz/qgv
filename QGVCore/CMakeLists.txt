@@ -24,7 +24,7 @@ SET(qgvlib_CPP
 SET(TARGET_NAME "QGVCore")
 
 # include with QT_USE selected library parts
-INCLUDE(${QT_USE_FILE})
+#INCLUDE(${QT_USE_FILE})
 
 INCLUDE_DIRECTORIES(
 	${GRAPHVIZ_INCLUDE_DIR}
@@ -73,7 +73,8 @@ TARGET_LINK_LIBRARIES(qgvcore
 )
 
 IF(BINDINGS_QT5)
-	qt5_use_modules(QVGCore Core Widgets)
+  #	qt5_use_modules(QVGCore Core Widgets)
+  TARGET_LINK_LIBRARIES(qgvcore Qt5::Core Qt5::Widgets)
 ENDIF(BINDINGS_QT5)
 
 SET_TARGET_PROPERTIES(qgvcore PROPERTIES
